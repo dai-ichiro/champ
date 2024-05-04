@@ -218,6 +218,7 @@ if __name__ == "__main__":
         driving_img_paths.sort(key=lambda x: int(x.split(".")[0]))
         smpls = []
         cams = []
+        scaled_focal_length = []
         for img_path in tqdm(driving_img_paths):
             img_cv2 = cv2.imread(str(os.path.join(video_path, "images", img_path)))
             img_fn, _ = os.path.splitext(os.path.basename(img_path))
@@ -228,10 +229,11 @@ if __name__ == "__main__":
                 results_dict_for_rendering, misc_args = predict_smpl(batch, model, model_cfg)
                 cams.append(results_dict_for_rendering["cam_t"][0])
                 smpls.append(results_dict_for_rendering["smpls"])
+                scaled_focal_length.append(results_dict_for_rendering["scaled_focal_length"])
                 np.save(
                     str(os.path.join(video_path, "smpl_results", f"{img_fn}.npy")),
                     results_dict_for_rendering)
                 
         np.savez(
             str(os.path.join(video_path, "smpl_results", f"smpls_group.npz")),
-            smpl=smpls,camera=cams)
+            smpl=smpls,camera=cams, scaled_focal_length=scaled_focal_length)
