@@ -45,8 +45,8 @@ https://github.com/fudan-generative-vision/champ/assets/82803297/b4571be6-dfb0-4
 
 # Installation
 
-- System requirement: Ubuntu20.04/Windows 11, Cuda 12.1
-- Tested GPUs: A100, RTX3090
+- System requirement: Ubuntu22.04, Cuda 11.8
+- Tested GPUs: RTX3080
 
 Create conda environment:
 
@@ -58,7 +58,9 @@ Create conda environment:
 Install packages with `pip`
 
 ```bash
+  pip install torch==2.3.0+cu118 torchvision==0.18.0+cu118 --index-url https://download.pytorch.org/whl/cu118
   pip install -r requirements.txt
+  pip install -U xformers --index-url https://download.pytorch.org/whl/cu118
 ```
 
 Install packages with [poetry](https://python-poetry.org/)
