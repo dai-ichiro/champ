@@ -115,13 +115,18 @@ Try Champ with your dance videos! It may take time to setup the environment, fol
 3. Smooth SMPL
 
     ```shell
-    blender --background --python scripts/data_processors/smpl/smooth_smpls.py --smpls_group_path driving_videos/your_video_1/smpl_results/smpls_group.npz --smoothed_result_path driving_videos/your_video_1/smpl_results/smpls_group.npz
+    blender --background --python scripts/data_processors/smpl/smooth_smpls.py --smpls_group_path driving_videos/your_video_1/smpl_results/smpls_group.npz --smoothed_result_path driving_videos/your_video_1/smpl_results/smooth_smpls_group.npz
     ```
     Ignore the warning message like `unknown argument` printed by Blender. There is also a user-friendlty [CEB Blender Add-on](https://www.patreon.com/posts/ceb-4d-humans-0-102810302) to help you visualize it.
 
+4. Processing after Smooth SMPL
 
+    ```shell
+    add_scaled_focal_length.py
+    ```
+    Ignore the warning message like `unknown argument` printed by Blender. There is also a user-friendlty [CEB Blender Add-on](https://www.patreon.com/posts/ceb-4d-humans-0-102810302) to help you visualize it.
 
-4. Transfer SMPL
+5. Transfer SMPL
 
     ```shell
     python -m scripts.data_processors.smpl.smpl_transfer --reference_path reference_imgs/smpl_results/your_ref_img_A.npy --driving_path driving_videos/your_video_1 --output_folder transferd_result --figure_transfer --view_transfer
@@ -130,7 +135,7 @@ Try Champ with your dance videos! It may take time to setup the environment, fol
     Append `--figure_transfer` when you want the result matches the reference SMPL's figure, and `--view_transfer` to transform the driving SMPL onto reference image's camera space.
 
 
-5. Render SMPL via Blender
+6. Render SMPL via Blender
 
     ```shell
     blender scripts/data_processors/smpl/blend/smpl_rendering.blend --background --python scripts/data_processors/smpl/render_condition_maps.py --driving_path transferd_result/smpl_results --reference_path reference_imgs/images/your_ref_img_A.png
@@ -138,7 +143,7 @@ Try Champ with your dance videos! It may take time to setup the environment, fol
 
     This will rendering in CPU on default. Append `--device YOUR_GPU_ID` to select a GPU for rendering. It will skip the exsiting rendered frames under the `transferd_result`. Keep it in mind when you want to overwrite with new rendering results. Ignore the warning message like `unknown argument` printed by Blender.
 
-6. Render DWPose
+7. Render DWPose
     Clone [DWPose](https://github.com/IDEA-Research/DWPose)
 
     DWPose is required by `scripts/data_processors/dwpose/generate_dwpose.py`. You need clone this repo to the specific directory `DWPose` by command below:
