@@ -106,7 +106,7 @@ Try Champ with your dance videos! It may take time to setup the environment, fol
     Then run script below to fit SMPL on reference images and driving videos:
 
     ```shell
-    python -m scripts.data_processors.smpl.generate_smpls --reference_imgs_folder reference_imgs --driving_video_path driving_videos/your_video_1 --device YOUR_GPU_ID
+    python -m scripts.data_processors.smpl.generate_smpls --reference_imgs_folder reference_imgs --driving_video_path driving_videos/your_video_1 --device 0
     ```
 
     Once finished, you can check `reference_imgs/visualized_imgs` to see the overlay results. To better fit some extreme figures, you may also append `--figure_scale ` to manually change the figure(or shape) of predicted SMPL, from `-10`(extreme fat) to `10`(extreme slim).
@@ -138,10 +138,10 @@ Try Champ with your dance videos! It may take time to setup the environment, fol
 6. Render SMPL via Blender
 
     ```shell
-    blender scripts/data_processors/smpl/blend/smpl_rendering.blend --background --python scripts/data_processors/smpl/render_condition_maps.py --driving_path transferd_result/smpl_results --reference_path reference_imgs/images/your_ref_img_A.png
+    blender scripts/data_processors/smpl/blend/smpl_rendering.blend --background --python scripts/data_processors/smpl/render_condition_maps.py --driving_path transferd_result/smpl_results --reference_path reference_imgs/images/your_ref_img_A.png --device 0
     ```
 
-    This will rendering in CPU on default. Append `--device YOUR_GPU_ID` to select a GPU for rendering. It will skip the exsiting rendered frames under the `transferd_result`. Keep it in mind when you want to overwrite with new rendering results. Ignore the warning message like `unknown argument` printed by Blender.
+    It will skip the exsiting rendered frames under the `transferd_result`. Keep it in mind when you want to overwrite with new rendering results. Ignore the warning message like `unknown argument` printed by Blender.
 
 7. Render DWPose
     Clone [DWPose](https://github.com/IDEA-Research/DWPose)
