@@ -46,6 +46,7 @@ https://github.com/fudan-generative-vision/champ/assets/82803297/b4571be6-dfb0-4
 # Installation
 
 - System requirement: Ubuntu22.04, Cuda 11.8
+- Python 3.10
 - Tested GPUs: RTX3080
 
 Create conda environment:
