@@ -132,7 +132,7 @@ git lfs install
 git clone https://huggingface.co/datasets/fudan-generative-ai/champ_motions_example example_data
 ```
 
-Or you can follow the [SMPL & Rendering doc](https://github.com/fudan-generative-vision/champ/blob/master/docs/data_process.md) to produce your own motion datas.
+Or you can follow the [SMPL & Rendering doc](https://github.com/dai-ichiro/champ/blob/master/docs/data_process.md) to produce your own motion datas.
 
 Finally, the `${PROJECT_ROOT}/example_data` will be like this:
 ```
