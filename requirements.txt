@@ -17,4 +17,5 @@ pyrender==0.1.45
 torchmetrics==1.2.1
 tqdm==4.66.1
 transformers==4.30.2
+tensorboard
 ultralytics==8.1.34
