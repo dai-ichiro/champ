@@ -122,7 +122,7 @@ Try Champ with your dance videos! It may take time to setup the environment, fol
 4. Processing after Smooth SMPL
 
     ```shell
-    add_scaled_focal_length.py
+    python add_scaled_focal_length.py
     ```
     Ignore the warning message like `unknown argument` printed by Blender. There is also a user-friendlty [CEB Blender Add-on](https://www.patreon.com/posts/ceb-4d-humans-0-102810302) to help you visualize it.
 
